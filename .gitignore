@@ -1,0 +1,4 @@
+tasks/js/node_modules/
+tasks/js/db/
+*Zone.Identifier
+projects/others/CounterApp

@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile C++ in Git Bash",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "g++ -g -std=c++20 \"$(cygpath -u \"${file}\")\" -o \"$(cygpath -u \"${fileDirname}/rooster.exe\")\""
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Execute C++ in Git Bash",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "winpty \"$(cygpath -u \"${fileDirname}/rooster.exe\")\""],
+      "group": "test",
+      "detail": "Execute compiled C++ file",
+      "dependsOn": ["Compile C++ in Git Bash"] // Ensures execution happens only after compilation
+    }
+  ]
+}
